@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
 
+import UserForm from "@/components/UserForm";
+
 export default function Home() {
   return (
     <>
@@ -23,6 +25,10 @@ export default function Home() {
             <li>Users</li>
           </Link>
         </ul>
+      </section>
+
+      <section>
+        <UserForm />
       </section>
     </>
   );

@@ -29,18 +29,20 @@ export default function Input({
       {type === "password" ? (
         <>
           <input
-            type={!show && type === "password" ? "password" : "text"}
+            type={!show ? "password" : "text"}
             id={id}
             placeholder={placeholder}
-            {...(inputProps ?? {})}
+            {...inputProps}
           />
-          <button onClick={() => isShow((prev) => !prev)}>show</button>
+          <button onClick={() => isShow((prev) => !prev)}>
+            {show ? "Hide" : "Show"}
+          </button>
         </>
       ) : (
         <input type={type} id={id} placeholder={placeholder} {...(inputProps ?? {})} />
       )}
       <div className="error">
-        <p style={{ margin: 0 }}>{error ? error : ""}</p>
+        <p style={{ margin: 0 }}>{error ? error : " "}</p>
       </div>
     </section>
   );

@@ -4,6 +4,7 @@ import Sidebar from "@/components/Sidebar";
 
 import { useAtom } from "jotai";
 import { counterAtom } from "@/atoms/counterAtoms";
+import VerticalLayout from "@/layout/VerticalLayout";
 
 const About: NextPage = () => {
   // console.log("hello");
@@ -11,12 +12,12 @@ const About: NextPage = () => {
   const [, setCounter] = useAtom(counterAtom);
 
   return (
-    <>
+    <VerticalLayout>
       <Sidebar open={open} isOpen={isOpen} />
       <h1>About</h1>
       <button onClick={() => setCounter((prev) => prev + 1)}>+</button>
       <button onClick={() => setCounter((prev) => prev - 1)}>-</button>
-    </>
+    </VerticalLayout>
   );
 };
 

@@ -47,8 +47,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  console.log(context.params);
-
   const userId = context.params?.userId as string;
 
   const { data } = await axios.get<IUser>(

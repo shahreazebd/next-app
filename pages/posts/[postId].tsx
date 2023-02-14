@@ -10,6 +10,9 @@ export type TPost = {
   body: string;
 };
 
+// eslint-disable-next-line no-console
+console.log("hello");
+
 const fetchPostDetails = (postId: string) => {
   return axios.get<TPost>(`https://jsonplaceholder.typicode.com/posts/${postId}`);
 };

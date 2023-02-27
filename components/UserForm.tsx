@@ -41,6 +41,7 @@ export default function UserForm() {
             },
           })}
           clearFn={() => resetField("username")}
+          dirty={dirtyFields.username as boolean}
           error={errors.username?.message as string}
         />
 
@@ -56,7 +57,7 @@ export default function UserForm() {
             },
           })}
           clearFn={() => resetField("time")}
-          dirty={dirtyFields.time}
+          dirty={dirtyFields.time as boolean}
           error={errors.time?.message as string}
         />
 

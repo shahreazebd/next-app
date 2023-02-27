@@ -8,26 +8,25 @@ type IInputValues = {
   email: string;
   password: string;
   confirmPassword: string;
+  time: string;
 };
 
 export default function UserForm() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm<IInputValues>({ mode: "all" });
+    resetField,
+    formState: { errors, dirtyFields },
+  } = useForm<IInputValues>();
 
-  const onSubmit: SubmitHandler<IInputValues> = (values) => {
-    console.log(values);
-  };
+  const onSubmit: SubmitHandler<IInputValues> = () => {};
 
   return (
     <section>
       <h4 style={{ marginBottom: 0, marginLeft: "5px" }}>User Form</h4>
       <form
-        action=""
         onSubmit={handleSubmit(onSubmit)}
-        style={{ display: "flex", flexDirection: "column", width: "25%" }}
+        style={{ display: "flex", flexDirection: "column" }}
       >
         <Input
           id="username"
@@ -41,7 +40,24 @@ export default function UserForm() {
               message: "Mininum 4",
             },
           })}
+          clearFn={() => resetField("username")}
           error={errors.username?.message as string}
+        />
+
+        <Input
+          id="time"
+          label="time"
+          type="time"
+          inputProps={register("time", {
+            required: "time is required",
+            minLength: {
+              value: 4,
+              message: "Mininum 4",
+            },
+          })}
+          clearFn={() => resetField("time")}
+          dirty={dirtyFields.time}
+          error={errors.time?.message as string}
         />
 
         <Input

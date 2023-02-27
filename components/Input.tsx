@@ -3,11 +3,13 @@ import { useState } from "react";
 
 type IInput = {
   id: string;
-  type: "number" | "text" | "password";
+  type: "number" | "text" | "password" | "time";
   label: string;
   placeholder?: string;
   inputProps: UseFormRegisterReturn<string>;
   error: string;
+  clearFn?: any;
+  dirty?: boolean;
 };
 
 export default function Input({
@@ -17,6 +19,8 @@ export default function Input({
   placeholder,
   inputProps,
   error,
+  clearFn,
+  dirty,
 }: IInput) {
   const [show, isShow] = useState(false);
 
@@ -39,7 +43,10 @@ export default function Input({
           </button>
         </>
       ) : (
-        <input type={type} id={id} placeholder={placeholder} {...(inputProps ?? {})} />
+        <>
+          <input type={type} id={id} placeholder={placeholder} {...(inputProps ?? {})} />
+          {dirty && <button onClick={clearFn}>Clear</button>}
+        </>
       )}
       <div className="error">
         <p style={{ margin: 0 }}>{error ? error : " "}</p>

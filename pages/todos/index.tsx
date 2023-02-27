@@ -37,6 +37,7 @@ export default function TodoList({ todoData }: TTodoListProps) {
       setTodos(res.data);
       router.push(`/todos?userId=${q}`, undefined, { shallow: true });
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [q]);
 
   return (

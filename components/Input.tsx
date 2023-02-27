@@ -9,6 +9,7 @@ type IInput1 = {
   inputProps: UseFormRegisterReturn<string>;
   error: string;
   clearFn?: false;
+  dirty?: never;
 };
 
 type IInput2 = {
